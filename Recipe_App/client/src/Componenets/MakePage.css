@@ -1,0 +1,153 @@
+.heading2 {
+  margin-top: 100px;
+  text-align: center;
+}
+.recipe {
+  margin-top: 100px;
+  height: 100%;
+  width: 90%;
+  box-shadow: 15px 15px 15px 15px grey;
+  background-image: url("../Assets/white-crinkled-paper-texture.jpg");
+  background-size: cover;
+}
+.fin {
+  height: 100%;
+  width: 100%;
+}
+.para {
+  font-size: 20px;
+}
+
+.item {
+  font-size: 20px;
+}
+.dalbat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 360vh;
+}
+.space {
+  height: 100%;
+  margin: 100px;
+}
+.cot {
+  margin-top: 20px;
+  height: 16%;
+  width: 100%;
+  border: 1px solid white;
+  z-index: 100;
+  display: flex;
+}
+.box3 {
+  height: 100%;
+  width: 40%;
+}
+.box4 {
+  height: 100%;
+  width: 60%;
+}
+.item {
+  font-size: 24px;
+  line-height: 20px;
+  margin: 15px;
+}
+.items {
+  font-size: 20px;
+}
+.timetaken {
+  margin-top: 80px;
+  height: 17%;
+  width: 100%;
+
+  background-color: #00000088;
+  display: flex;
+  justify-content: center;
+}
+.block {
+  height: 100%;
+  width: 30%;
+  border: 1px solid white;
+}
+.cr {
+  text-align: center;
+  align-items: center;
+  flex-direction: row;
+}
+.cr h2 {
+  margin-top: 30px !important;
+}
+.fk {
+  margin-top: 20px;
+}
+.recipe-list {
+  list-style: none;
+}
+.lets-make-container {
+margin-top: 70px;
+  height: 166vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+}
+.letsmake {
+  width: 50%;
+  height: 100%;
+  /*position: absolute;
+  right: 0;
+  */background-image: url('https://img.freepik.com/free-photo/handrawn-barbecue-elements_125540-588.jpg?w=740&t=st=1696667585~exp=1696668185~hmac=1ad4ce6ad2e24f4ea14e58c03f88400ef14047e0b5f92eee0fcf6b738cf266bf');
+  background-size: contain;
+ 
+
+  -webkit-backface-visibility:hidden  ;
+}
+.recipe_img {
+  width: 50%;
+  height: 100%;
+}
+.recipe-list1 {
+  margin-left: 50px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 2fr); /* Create two equal-width columns */
+  grid-gap: 20px; /* Add some spacing between items */
+}
+.recipe-section-title {
+  font-size: 40px;
+  letter-spacing: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipe-section1 {
+  background-color: rgba(255, 166, 0, 0.87);
+  padding: 20px;
+font-size: 20px;
+z-index: 100;
+
+}
+
+.recipe-section2{
+background-color:rgba(234, 245, 245, 0.842) ;
+padding: 20px;
+font-size: 20px;
+line-height: 30px;
+}
+.recipe-title{
+font-size: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+letter-spacing: 5px;
+background-color: rgba(255, 255, 255, 0.822);
+}
+.recipe-info{
+font-size: 24px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgba(255, 255, 255, 0.822);
+
+}
