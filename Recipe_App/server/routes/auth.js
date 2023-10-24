@@ -1,7 +1,7 @@
 import User from "../model/userSchema.js";
 import express from 'express'
 import bcrypt from 'bcrypt';
-
+import Recipe from "../model/recipeSchema.js"; 
 
 const router= express.Router();
 router.get('/',(req,res)=>{
@@ -11,6 +11,9 @@ router.get('/login',(req,res)=>{
 res.send(`hello login `);
 })
 
+router.get('/add',(req,res)=>{
+res.send(`hello adding recipe`)
+})
 
 router.post('/register', async (req, res) => {
  console.log(req.body);
@@ -31,7 +34,7 @@ router.post('/register', async (req, res) => {
       return res.status(422).json({ error: 'Email already registered' });
     }
 
-    // Hash the password using bcrypt
+    
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
@@ -90,7 +93,25 @@ console.log(req.body)
   }
   });
 
-  
+  router.post("/add", async (req, res) => {
+  try {
+    const { name, ingredients, directions, category, image } = req.body;
+
+    const newRecipe = new Recipe({
+      name,
+      ingredients,
+      directions,
+      category,
+      image,
+    });
+
+    const savedRecipe = await newRecipe.save();
+
+    res.status(201).json(savedRecipe);
+  } catch (error) {
+    res.status(500).json({ error: "Error adding the recipe to the database" });
+  }
+});
 
 
 export default router;
@@ -107,28 +128,3 @@ export default router;
 
 
 
-
-// router.post('/register', async (req, res) => {
-//     const { name, email, phone, work, password, cpassword } = req.body;
-  
-//     if (!name || !email || !phone || !password || !cpassword) {
-//       return res.status(422).json({ error: "Please fill in all the fields properly" });
-//     }
-  
-//     try {
-//       const userExist = await User.findOne({ email: email });
-  
-//       if (userExist) {
-//         return res.status(422).json({ error: "Email already registered" });
-//       }
-  
-//       const newUser = new User({ name, email, phone, password, cpassword });
-  
-//       await newUser.save();
-//       res.status(200).json({ message: "User registered successfully" });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ error: "Failed to register" });
-//     }
-//   });
-  
