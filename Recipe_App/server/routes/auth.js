@@ -2,7 +2,7 @@ import User from "../model/userSchema.js";
 import express from 'express'
 import bcrypt from 'bcrypt';
 import Recipe from "../model/recipeSchema.js"; 
-
+import nodemailer from 'nodemailer';
 const router= express.Router();
 router.get('/',(req,res)=>{
     res.send(`Hello world from the server router.js `);
