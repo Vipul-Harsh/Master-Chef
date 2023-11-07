@@ -92,21 +92,39 @@ console.log(req.body)
     res.status(500).json({ error: 'Internal server error' });
   }
   });
-
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail', // e.g., 'Gmail', 'Yahoo', etc.
+    auth: {
+      user: 'harshvipul.1704@gmail.com', // Your email address
+      pass: 'ozcvuvonnehisyqf', // Your email password or application-specific password
+    },
+  });
+  
   router.post("/add", async (req, res) => {
   try {
-    const { name, ingredients, directions, category, image } = req.body;
+    const { name, email, subject, message } = req.body;
 
     const newRecipe = new Recipe({
       name,
-      ingredients,
-      directions,
-      category,
-      image,
+     email,
+     subject,
+      message
     });
 
     const savedRecipe = await newRecipe.save();
-
+    const mailOptions = {
+      from: 'harshvipul.1704@gmail.com',
+      to: email, // Use the provided email address
+      subject: 'New Message',
+      text: `Thankyou ${name} for contacting us at Master-chef we will get back to you soon !!`,
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log('Error sending email: ' + error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
     res.status(201).json(savedRecipe);
   } catch (error) {
     res.status(500).json({ error: "Error adding the recipe to the database" });

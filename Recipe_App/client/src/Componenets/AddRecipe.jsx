@@ -2,84 +2,75 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import "./NavBar.css";
 import axios from "axios";
+
 const AddRecipe = () => {
-  const [recipeData, setRecipeData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
-    ingredients: "",
-    directions: "",
-    category: "",
-    image: null,
+    email: "",
+    subject: "",
+    message: "",
   });
-  const handleSubmit =  (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, ingredients, directions, category } = recipeData;
-    if (name && ingredients && directions && category ){
-      axios.post("http://localhost:8080/add", recipeData).then((res) => {
-         
-        console.log("successful");
-        }).catch((error) => {
-         
-          alert("Registration failed. Please try again.");
-        });
-  } else {
-      alert("Invalid registration data.");
+    const { name, email, subject, message } = formData;
+
+    if (name && email && subject && message) {
+      axios.post("http://localhost:8080/add", formData).then((res) => {
+        console.log("Contact form submitted successfully");
+      }).catch((error) => {
+        alert("Contact form submission failed. Please try again.");
+      });
+    } else {
+      alert("Invalid contact form data. Please fill in all fields.");
     }
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setRecipeData({ ...recipeData, [name]: value });
-  };
-
-  const handleImageUpload = (e) => {
-    const imageFile = e.target.files[0];
-    setRecipeData({ ...recipeData, image: imageFile });
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
     <>
       <NavBar />
       <div className="add">
-        <h1 className="h">Add Recipe</h1>
+        <h1 className="h">Contact Us</h1>
         <form onSubmit={handleSubmit} className="add1">
           <input
             type="text"
             name="name"
-            value={recipeData.name}
+            value={formData.name}
             onChange={handleChange}
-            placeholder="Recipe Name"
+            placeholder="Your Name"
             required
           />
-          <textarea
-            name="ingredients"
-            value={recipeData.ingredients}
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
-            placeholder="Ingredients"
-            required
-          />
-          <textarea
-            name="directions"
-            value={recipeData.directions}
-            onChange={handleChange}
-            placeholder="Directions"
+            placeholder="Your Email"
             required
           />
           <input
             type="text"
-            name="category"
-            value={recipeData.category}
+            name="subject"
+            value={formData.subject}
             onChange={handleChange}
-            placeholder="Category"
+            placeholder="Subject"
             required
           />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="select"
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your Message"
+            required
           />
 
-          <button type="submit" className="start2" onClick={handleSubmit}>
-            Submit Recipe
+          <button type="submit" className="start2">
+            Submit
           </button>
         </form>
       </div>

@@ -5,11 +5,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-  
     "start": "node app.js",
-"app":"nodemon app.js",
- "client": "npm start --prefix ../client",
- "dev": "concurrently \"npm run app\" \"npm run client\""
+    "app": "nodemon app.js",
+    "client": "npm start --prefix ../client",
+    "dev": "concurrently \"npm run app\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -25,9 +24,11 @@
     "mongoose": "^7.6.1",
     "mongose": "^0.0.2-security",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.9.7",
     "nodemon": "^3.0.1"
   },
   "devDependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "react-scripts": "^5.0.1"
   }
 }

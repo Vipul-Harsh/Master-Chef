@@ -5,22 +5,17 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  ingridents: {
-    type: [String],
-    required: true,
-  },
-
-  Directions: {
-    type: [String],
-    required: true,
-  },
-  Category: {
+  email: {
     type: String,
     required: true,
   },
-  image: {
+  subject: {
     type: String,
-    required: false,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
   },
 });
 
